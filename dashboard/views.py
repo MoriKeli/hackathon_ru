@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponseForbidden
 import requests
 import json
 
@@ -9,21 +10,22 @@ def index_view(request):
 
     headers = {'Authorization': f'Bearer {API_KEY}'}
     response =  requests.get(BASE_URL, headers=headers)
-
-    data = response.json()
     
-    filter_data = {
-        'county': data["results"][0]["county"],
-        'sub_county': data["results"][0]["sub_county_name"],
-        'constituency_name': data["results"][0]["constituency_name"],
-        'ward': data["results"][0]["ward_name"],
+    filter_data = {}
+    if response.status_code == 200:
+        data = response.json()
+        
+        filter_data = {
+            'county': data["results"][0]["county"],
+            'sub_county': data["results"][0]["sub_county_name"],
+            'constituency_name': data["results"][0]["constituency_name"],
+            'ward': data["results"][0]["ward_name"],
 
-    }
+        }
+    
+    else:
+        return HttpResponseForbidden('Authentication verification failed!', response.status_code)
 
-    for i in data:
-        print(data["results"][6]["county"])
-
-    print(len(data))
     context = {
         'total_count': data,
         'county': filter_data['county'],
