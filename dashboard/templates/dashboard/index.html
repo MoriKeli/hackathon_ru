@@ -16,7 +16,7 @@
     </style>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 offset-sm-3">
+            <div class="col-md-8 offset-sm-3">
                 <table class="table table-condensed table-striped table-hover">
                     <thead>
                         <tr class="table-primary">
@@ -25,6 +25,10 @@
                             <th>Sub county</th>
                             <th>Constituency</th>
                             <th>Ward</th>
+                            <th>Facility</th>
+                            <th>Facility type</th>
+                            <th>Keph level</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -35,6 +39,9 @@
                             <td>{{sub_county}}</td>
                             <td>{{constituency}}</td>
                             <td>{{ward}}</td>
+                            <td>{{facility}}</td>
+                            <td>{{type}}</td>
+                            <td>{{keph}}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
