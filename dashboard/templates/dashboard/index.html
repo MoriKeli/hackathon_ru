@@ -4,11 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
     <title>Dashboard</title>
 </head>
 <body>
-    <div>
-        {{response}}
+    <style>
+        .container {
+            margin-top: 3%;
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-sm-3">
+                <table class="table table-condensed table-striped table-hover">
+                    <thead>
+                        <tr class="table-primary">
+                            <th>#</th>
+                            <th>County</th>
+                            <th>Sub county</th>
+                            <th>Constituency</th>
+                            <th>Ward</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in total_count %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{county}}</td>
+                            <td>{{sub_county}}</td>
+                            <td>{{constituency}}</td>
+                            <td>{{ward}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
 
     </div>
 </body>
