@@ -20,6 +20,10 @@ def index_view(request):
             'sub_county': data["results"][0]["sub_county_name"],
             'constituency_name': data["results"][0]["constituency_name"],
             'ward': data["results"][0]["ward_name"],
+            'facility_name': data["results"][0]["name"],
+            'facility_type': data["results"][0]["facility_type_name"],
+            'keph_level': data["results"][0]["keph_level_name"],
+
 
         }
     
@@ -31,6 +35,9 @@ def index_view(request):
         'county': filter_data['county'],
         'sub_county': filter_data["sub_county"],
         'constituency': filter_data["constituency_name"],
-        'ward': filter_data["ward"]
+        'ward': filter_data["ward"],
+        'facility': filter_data["facility_name"],
+        'type': filter_data["facility_type"],
+        'keph': filter_data["keph_level"],
     }
     return render(request, 'dashboard/index.html', context)
